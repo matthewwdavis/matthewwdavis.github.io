@@ -10,11 +10,66 @@
   --text:        #ccd6f6;
   --text-muted:  #8892b0;
   --white:       #e6f1ff;
+  --nav-bg:      rgba(10, 15, 30, 0.92);
+  --nav-border:  rgba(100, 255, 218, 0.08);
+  --hero-ov-1:   rgba(10, 15, 30, 0.72);
+  --hero-ov-2:   rgba(10, 15, 30, 0.78);
+  --btn-primary-text: #0a0f1e;
   --nav-height:  70px;
   --max-width:   1000px;
   --radius:      6px;
   --transition:  0.25s ease;
   --font-mono:   "Courier New", Courier, monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:          #f4f8fc;
+    --bg-alt:      #eaf1f7;
+    --surface:     #ffffff;
+    --accent:      #0f766e;
+    --accent-dim:  rgba(15, 118, 110, 0.14);
+    --text:        #0f172a;
+    --text-muted:  #475569;
+    --white:       #111827;
+    --nav-bg:      rgba(244, 248, 252, 0.92);
+    --nav-border:  rgba(15, 118, 110, 0.18);
+    --hero-ov-1:   rgba(244, 248, 252, 0.55);
+    --hero-ov-2:   rgba(244, 248, 252, 0.68);
+    --btn-primary-text: #ffffff;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg:          #f4f8fc;
+  --bg-alt:      #eaf1f7;
+  --surface:     #ffffff;
+  --accent:      #0f766e;
+  --accent-dim:  rgba(15, 118, 110, 0.14);
+  --text:        #0f172a;
+  --text-muted:  #475569;
+  --white:       #111827;
+  --nav-bg:      rgba(244, 248, 252, 0.92);
+  --nav-border:  rgba(15, 118, 110, 0.18);
+  --hero-ov-1:   rgba(244, 248, 252, 0.55);
+  --hero-ov-2:   rgba(244, 248, 252, 0.68);
+  --btn-primary-text: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --bg:          #0a0f1e;
+  --bg-alt:      #0d1526;
+  --surface:     #112240;
+  --accent:      #64ffda;
+  --accent-dim:  rgba(100, 255, 218, 0.15);
+  --text:        #ccd6f6;
+  --text-muted:  #8892b0;
+  --white:       #e6f1ff;
+  --nav-bg:      rgba(10, 15, 30, 0.92);
+  --nav-border:  rgba(100, 255, 218, 0.08);
+  --hero-ov-1:   rgba(10, 15, 30, 0.72);
+  --hero-ov-2:   rgba(10, 15, 30, 0.78);
+  --btn-primary-text: #0a0f1e;
 }
 
 /* ===========================
@@ -59,10 +114,10 @@ ul { list-style: none; }
   top: 0;
   width: 100%;
   height: var(--nav-height);
-  background: rgba(10, 15, 30, 0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(100, 255, 218, 0.08);
+  border-bottom: 1px solid var(--nav-border);
   z-index: 1000;
   transition: box-shadow var(--transition);
 }
@@ -93,6 +148,12 @@ ul { list-style: none; }
   gap: 32px;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .nav-links a {
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -106,6 +167,24 @@ ul { list-style: none; }
 }
 
 .nav-links a:hover { color: var(--accent); }
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--nav-border);
+  background: transparent;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--accent-dim);
+}
 
 /* Hamburger (mobile) */
 .hamburger {
@@ -141,8 +220,8 @@ ul { list-style: none; }
   padding: 0 24px;
   padding-top: var(--nav-height);
   background-image: linear-gradient(
-      rgba(10, 15, 30, 0.72),
-      rgba(10, 15, 30, 0.78)
+      var(--hero-ov-1),
+      var(--hero-ov-2)
     ),
     url("../halfdome_northern_lights.jpg");
   background-size: cover;
@@ -207,7 +286,7 @@ ul { list-style: none; }
 
 .btn-primary {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--btn-primary-text);
 }
 .btn-primary:hover {
   background: transparent;
