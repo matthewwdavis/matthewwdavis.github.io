@@ -243,14 +243,6 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 
-.section-title::before {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--accent);
-  counter-increment: section;
-  content: "0" counter(section) ".";
-}
-
 .section-title::after {
   content: "";
   display: block;
@@ -259,7 +251,7 @@ ul { list-style: none; }
   background: var(--surface);
 }
 
-body { counter-reset: section nav-item; }
+body { counter-reset: nav-item; }
 
 /* ===========================
    About
@@ -272,6 +264,11 @@ body { counter-reset: section nav-item; }
 }
 
 .about-text p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.publications-intro {
   color: var(--text-muted);
   margin-bottom: 16px;
 }
@@ -434,6 +431,8 @@ body { counter-reset: section nav-item; }
   color: var(--text-muted);
   margin-bottom: 32px;
   font-size: 1.05rem;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .social-links {
