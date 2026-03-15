@@ -256,7 +256,7 @@ ul { list-style: none; }
       var(--hero-ov-1),
       var(--hero-ov-2)
     ),
-    url("../halfdome_northern_lights.jpg");
+    url("../halfdome_illuminated.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
