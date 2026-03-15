@@ -14,6 +14,8 @@
   --nav-border:  rgba(100, 255, 218, 0.08);
   --hero-ov-1:   rgba(10, 15, 30, 0.72);
   --hero-ov-2:   rgba(10, 15, 30, 0.78);
+  --section-ov-1: rgba(10, 15, 30, 0.72);
+  --section-ov-2: rgba(10, 15, 30, 0.78);
   --btn-primary-text: #0a0f1e;
   --nav-height:  70px;
   --max-width:   1000px;
@@ -36,6 +38,8 @@
     --nav-border:  rgba(15, 118, 110, 0.18);
     --hero-ov-1:   rgba(244, 248, 252, 0.55);
     --hero-ov-2:   rgba(244, 248, 252, 0.68);
+    --section-ov-1: rgba(244, 248, 252, 0.58);
+    --section-ov-2: rgba(244, 248, 252, 0.72);
     --btn-primary-text: #ffffff;
   }
 }
@@ -53,6 +57,8 @@
   --nav-border:  rgba(15, 118, 110, 0.18);
   --hero-ov-1:   rgba(244, 248, 252, 0.55);
   --hero-ov-2:   rgba(244, 248, 252, 0.68);
+  --section-ov-1: rgba(244, 248, 252, 0.58);
+  --section-ov-2: rgba(244, 248, 252, 0.72);
   --btn-primary-text: #ffffff;
 }
 
@@ -69,6 +75,8 @@
   --nav-border:  rgba(100, 255, 218, 0.08);
   --hero-ov-1:   rgba(10, 15, 30, 0.72);
   --hero-ov-2:   rgba(10, 15, 30, 0.78);
+  --section-ov-1: rgba(10, 15, 30, 0.72);
+  --section-ov-2: rgba(10, 15, 30, 0.78);
   --btn-primary-text: #0a0f1e;
 }
 
@@ -325,6 +333,31 @@ ul { list-style: none; }
 
 .section-alt {
   background: var(--bg-alt);
+}
+
+#about,
+#publications,
+#projects,
+#contact {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#about {
+  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../halfdome_illuminated.jpg");
+}
+
+#publications {
+  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../pistachio_field.jpg");
+}
+
+#projects {
+  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../pistachio_nuts.jpg");
+}
+
+#contact {
+  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../grapes.jpg");
 }
 
 .container {
