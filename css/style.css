@@ -8,7 +8,7 @@
   --accent:      #64ffda;
   --accent-dim:  rgba(100, 255, 218, 0.15);
   --text:        #ccd6f6;
-  --text-muted:  #8892b0;
+  --text-muted:  #000000;
   --white:       #e6f1ff;
   --nav-bg:      rgba(10, 15, 30, 0.92);
   --nav-border:  rgba(100, 255, 218, 0.08);
@@ -35,7 +35,7 @@
     --accent:      #0f766e;
     --accent-dim:  rgba(15, 118, 110, 0.14);
     --text:        #0f172a;
-    --text-muted:  #475569;
+    --text-muted:  #000000;
     --white:       #111827;
     --nav-bg:      rgba(244, 248, 252, 0.92);
     --nav-border:  rgba(15, 118, 110, 0.18);
@@ -57,7 +57,7 @@
   --accent:      #0f766e;
   --accent-dim:  rgba(15, 118, 110, 0.14);
   --text:        #0f172a;
-  --text-muted:  #475569;
+  --text-muted:  #000000;
   --white:       #111827;
   --nav-bg:      rgba(244, 248, 252, 0.92);
   --nav-border:  rgba(15, 118, 110, 0.18);
@@ -78,7 +78,7 @@
   --accent:      #64ffda;
   --accent-dim:  rgba(100, 255, 218, 0.15);
   --text:        #ccd6f6;
-  --text-muted:  #8892b0;
+  --text-muted:  #000000;
   --white:       #e6f1ff;
   --nav-bg:      rgba(10, 15, 30, 0.92);
   --nav-border:  rgba(100, 255, 218, 0.08);
@@ -183,12 +183,6 @@ ul { list-style: none; }
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text);
-  counter-increment: nav-item;
-}
-
-.nav-links a::before {
-  content: "0" counter(nav-item) ". ";
-  color: var(--accent);
 }
 
 .nav-links a:hover { color: var(--accent); }
@@ -383,8 +377,6 @@ ul { list-style: none; }
 .section-title::after {
   display: none;
 }
-
-body { counter-reset: nav-item; }
 
 /* ===========================
    About
