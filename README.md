@@ -6,7 +6,7 @@ Live site: https://matthewwdavis.github.io/
 
 ## Features
 
-- Responsive one-page layout with sections for About, Recent Publications, Projects, CV, and Contact
+- One-page layout with sections for About, Recent Publications, Projects, CV, and Contact
 - Manual theme toggle with `Auto`, `Dark`, and `Light` modes
 - Recent publications loaded from `data/publications.json`
 - Automated weekly refresh of publication data from Google Scholar
@@ -86,15 +86,6 @@ python3 scripts/fetch_scholar_publications.py
 This site deploys with GitHub Actions using `.github/workflows/deploy-pages.yml`.
 
 Any push to `main` triggers a new deployment to GitHub Pages.
-
-Typical update flow:
-
-```bash
-cd /Users/davismw/Documents/Website
-git add .
-git commit -m "Update site"
-git push
-```
 
 ## Notes
 
