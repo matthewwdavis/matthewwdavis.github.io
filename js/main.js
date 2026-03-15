@@ -91,6 +91,33 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ── Project cards: click anywhere to open repository ──
+document.querySelectorAll('.project-card[data-repo-url]').forEach((card) => {
+  const repoUrl = card.getAttribute('data-repo-url');
+
+  if (!repoUrl) {
+    return;
+  }
+
+  card.addEventListener('click', (event) => {
+    // Preserve behavior for explicit links inside the card.
+    if (event.target.closest('a, button')) {
+      return;
+    }
+
+    window.open(repoUrl, '_blank', 'noopener,noreferrer');
+  });
+
+  card.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    event.preventDefault();
+    window.open(repoUrl, '_blank', 'noopener,noreferrer');
+  });
+});
+
 // ── Fade-in sections as they enter the viewport ──
 const observer = new IntersectionObserver(
   (entries) => {

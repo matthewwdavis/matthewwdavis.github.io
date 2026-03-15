@@ -96,6 +96,11 @@ html {
 
 body {
   background-color: var(--bg);
+  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../purple_flower.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
@@ -335,30 +340,6 @@ ul { list-style: none; }
   background: var(--bg-alt);
 }
 
-#about,
-#publications,
-#projects,
-#contact {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#about {
-  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../halfdome_illuminated.jpg");
-}
-
-#publications {
-  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../pistachio_field.jpg");
-}
-
-#projects {
-  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../pistachio_nuts.jpg");
-}
-
-#contact {
-  background-image: linear-gradient(var(--section-ov-1), var(--section-ov-2)), url("../grapes.jpg");
-}
 
 .container {
   max-width: var(--max-width);
@@ -515,12 +496,18 @@ body { counter-reset: nav-item; }
   display: flex;
   flex-direction: column;
   gap: 16px;
+  cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .project-top {
