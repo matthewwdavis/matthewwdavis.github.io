@@ -351,6 +351,18 @@ body { counter-reset: nav-item; }
 /* ===========================
    Projects
    =========================== */
+.project-group + .project-group {
+  margin-top: 40px;
+}
+
+.project-group-title {
+  font-size: 1rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  margin-bottom: 18px;
+  letter-spacing: 0.04em;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
