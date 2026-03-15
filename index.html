@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matthew Davis — Personal Site</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">Matthew Davis</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="hero-greeting">Hi, my name is</p>
+        <h1 class="hero-name">Matthew Davis</h1>
+        <h2 class="hero-tagline">PhD Candidate, Plant Biology</h2>
+        <p class="hero-description">
+          I'm a PhD candidate interested in plant genomics, mutation biology,
+          and somatic variation. Explore some of my
+          recent work below.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              Hi, I'm Matt, a PhD candidate at the University of California, Davis.
+              I study plant biology, with a focus on how somatic mutation effects
+              clonally propagated plants.
+            </p>
+            <p>
+              When I'm not coding, you'll find me reading, exploring the
+              outdoors, or tinkering with side projects. I'm always open to new
+              opportunities and collaborations.
+            </p>
+            <p>
+              Recent collaborative publications are listed below and refreshed
+              automatically from
+              <a href="https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">my Google Scholar profile</a>.
+            </p>
+            <ul class="publication-list" id="publication-list">
+              <li>
+                Loading recent publications from Google Scholar...
+              </li>
+            </ul>
+            <p class="publication-updated" id="publication-updated"></p>
+          </div>
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img src="photo_matt.jpg" alt="Me at Linda Falls in Napa County, California" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+
+          <!-- ggenomics -->
+          <article class="project-card">
+            <div class="project-top">
+              <i class="fa-regular fa-folder-open project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/matthewwdavis/ggenomics" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">ggenomics</h3>
+            <p class="project-description">
+              An R package for visualizing genomic features using ggplot2 syntax.
+              Provides functions to dynamically plot genomes for exploratory data
+              analysis of genomic datasets.
+            </p>
+            <ul class="project-tech">
+              <li>R</li>
+            </ul>
+          </article>
+
+          <!-- Walnut Mutation Accumulation -->
+          <article class="project-card">
+            <div class="project-top">
+              <i class="fa-regular fa-folder-open project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/matthewwdavis/Walnut-Mutation-Accumulation" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Walnut Mutation Accumulation</h3>
+            <p class="project-description">
+              Scripts and analyses investigating somatic mutation accumulation in
+              clonally propagated walnut plants, supporting research into
+              how plants acquire mutations over vegetative generations.
+              The manuscript this data supports is currently available as a
+              <a href="https://www.biorxiv.org/content/10.1101/2025.07.24.664184v1.full" target="_blank" rel="noopener noreferrer">preprint on bioRxiv</a>
+              and in review.
+            </p>
+            <ul class="project-tech">
+              <li>R</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container contact-container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="contact-intro">
+          I'm currently looking to graduate soon, and I'm excited for the next step.
+          Whether you have a question about my work, want to discuss project ideas,
+          or want to talk science, please feel free to reach out.
+        </p>
+        <a href="mailto:mtdavis@ucdavis.edu" class="btn btn-primary">Say Hello</a>
+        <div class="social-links">
+          <a href="https://github.com/matthewwdavis" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </a>
+          <a href="https://linkedin.com/in/davismattheww" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://bsky.app/profile/davismw.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+            <i class="fa-brands fa-bluesky"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Designed &amp; Built by Matthew Davis &mdash;
+        <a href="https://github.com/matthewwdavis/matthewwdavis.github.io" target="_blank" rel="noopener noreferrer">
+          View Source
+        </a>
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
