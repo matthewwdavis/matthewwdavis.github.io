@@ -1,74 +1,103 @@
-# Personal Website
+# Matthew Davis Personal Website
 
-A clean, responsive personal portfolio site built with vanilla HTML, CSS, and JavaScript.
+Personal website for Matthew Davis, built as a static site with vanilla HTML, CSS, and JavaScript and deployed with GitHub Pages.
+
+Live site: https://matthewwdavis.github.io/
+
+## Features
+
+- Responsive one-page layout with sections for About, Recent Publications, Projects, CV, and Contact
+- Manual theme toggle with `Auto`, `Dark`, and `Light` modes
+- Recent publications loaded from `data/publications.json`
+- Automated weekly refresh of publication data from Google Scholar
+- GitHub Pages deployment through GitHub Actions
+- Clickable project cards linking to external repositories
 
 ## Project Structure
 
-```
+```text
 Website/
-├── index.html          # Main page
+├── .github/
+│   └── workflows/
+│       ├── deploy-pages.yml
+│       └── update-publications.yml
 ├── css/
-│   └── style.css       # Styles
+│   └── style.css
+├── data/
+│   └── publications.json
 ├── js/
-│   └── main.js         # Interactivity
-├── assets/
-│   └── profile.jpg     # Your profile photo (add this yourself)
+│   └── main.js
+├── scripts/
+│   └── fetch_scholar_publications.py
+├── index.html
+├── Matthew_Davis_CV_2025-11-12_site.pdf
 └── README.md
 ```
 
-## Personalizing the Site
+## Local Preview
 
-Before publishing, update the following placeholders in `index.html`:
-
-| Placeholder | What to change it to |
-|---|---|
-| `Davis MW` | Your name |
-| `your@email.com` | Your email address |
-| `yourusername` (×3 in social links) | Your GitHub / LinkedIn / X handles |
-| Project card content | Your real projects, links, and tech stacks |
-| `assets/profile.jpg` | Your own photo (same filename, or update the `src`) |
-
----
-
-## Publishing on GitHub Pages
-
-### 1. Create the repository
-
-1. Go to [github.com](https://github.com) and sign in.
-2. Click **+** → **New repository**.
-3. Name it exactly: `<your-github-username>.github.io`  
-   *(e.g. `davismw.github.io`)*
-4. Set visibility to **Public**.
-5. Click **Create repository**.
-
-### 2. Push your local files
-
-Open a terminal in this folder and run:
+Because this is a static site, there is no build step. To preview locally:
 
 ```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-username>.github.io.git
-git push -u origin main
+cd /Users/davismw/Documents/Website
+python3 -m http.server 8000
 ```
 
-### 3. Enable GitHub Pages
+Then open: http://localhost:8000
 
-1. In your repository, go to **Settings → Pages**.
-2. Under **Source**, select **Deploy from a branch**.
-3. Choose branch **main** / root `/`.
-4. Click **Save**.
+This is preferred over opening `index.html` directly because the publications section loads JSON with `fetch()`, which is blocked in many browsers for local `file://` pages.
 
-Your site will be live at `https://<your-username>.github.io` within a minute or two.
+## Updating the Site
 
-### 4. Update after making changes
+Most content changes live in `index.html`.
+
+- Edit section content, links, and project cards in `index.html`
+- Edit colors, spacing, layout, and responsive behavior in `css/style.css`
+- Edit interactivity, theme logic, and publication rendering in `js/main.js`
+- Replace or add site images in the repository root and update file paths in HTML or CSS
+
+## Publications Workflow
+
+The Recent Publications section is populated from `data/publications.json`.
+
+### Automatic updates
+
+GitHub Actions runs `.github/workflows/update-publications.yml` every Monday and can also be triggered manually from the Actions tab.
+
+The workflow:
+
+1. Sets up Python 3.11
+2. Installs `requests` and `beautifulsoup4`
+3. Runs `scripts/fetch_scholar_publications.py`
+4. Commits and pushes `data/publications.json` if publication data changed
+
+### Manual update
+
+To refresh publications locally:
 
 ```bash
+cd /Users/davismw/Documents/Website
+python3 -m pip install requests beautifulsoup4
+python3 scripts/fetch_scholar_publications.py
+```
+
+## Deployment
+
+This site deploys with GitHub Actions using `.github/workflows/deploy-pages.yml`.
+
+Any push to `main` triggers a new deployment to GitHub Pages.
+
+Typical update flow:
+
+```bash
+cd /Users/davismw/Documents/Website
 git add .
 git commit -m "Update site"
 git push
 ```
 
-GitHub Pages will automatically redeploy on every push to `main`.
+## Notes
+
+- The CV link in the navigation currently points to `Matthew_Davis_CV_2025-11-12_site.pdf`
+- The publication source is the Google Scholar profile for user `NVSRY8kAAAAJ`
+- Font Awesome icons are loaded from a CDN in `index.html`
