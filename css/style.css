@@ -369,6 +369,14 @@ ul { list-style: none; }
   -webkit-backdrop-filter: blur(3px);
 }
 
+#publications .text-panel {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 .section-title {
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   color: var(--white);
