@@ -353,6 +353,13 @@ ul { list-style: none; }
   background: transparent;
 }
 
+#publications {
+  background-image: url("../purple_flower.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 .container {
   max-width: var(--max-width);
