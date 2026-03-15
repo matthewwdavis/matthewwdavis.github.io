@@ -140,6 +140,14 @@ ul { list-style: none; }
   align-items: center;
   padding: 0 24px;
   padding-top: var(--nav-height);
+  background-image: linear-gradient(
+      rgba(10, 15, 30, 0.72),
+      rgba(10, 15, 30, 0.78)
+    ),
+    url("../halfdome_northern_lights.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -520,6 +528,10 @@ footer a:hover { color: var(--accent); }
 
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    order: -1;
   }
 
   .image-wrapper {
