@@ -16,7 +16,7 @@
   --hero-ov-2:   rgba(10, 15, 30, 0.78);
   --section-ov-1: rgba(10, 15, 30, 0.72);
   --section-ov-2: rgba(10, 15, 30, 0.78);
-  --panel-bg:    rgba(17, 34, 64, 0.72);
+  --panel-bg:    rgba(17, 34, 64, 0.52);
   --panel-border: rgba(100, 255, 218, 0.2);
   --panel-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   --btn-primary-text: #0a0f1e;
@@ -43,7 +43,7 @@
     --hero-ov-2:   rgba(244, 248, 252, 0.68);
     --section-ov-1: rgba(244, 248, 252, 0.58);
     --section-ov-2: rgba(244, 248, 252, 0.72);
-    --panel-bg:    rgba(255, 255, 255, 0.74);
+    --panel-bg:    rgba(255, 255, 255, 0.56);
     --panel-border: rgba(15, 118, 110, 0.25);
     --panel-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
     --btn-primary-text: #ffffff;
@@ -65,7 +65,7 @@
   --hero-ov-2:   rgba(244, 248, 252, 0.68);
   --section-ov-1: rgba(244, 248, 252, 0.58);
   --section-ov-2: rgba(244, 248, 252, 0.72);
-  --panel-bg:    rgba(255, 255, 255, 0.74);
+  --panel-bg:    rgba(255, 255, 255, 0.56);
   --panel-border: rgba(15, 118, 110, 0.25);
   --panel-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
   --btn-primary-text: #ffffff;
@@ -86,7 +86,7 @@
   --hero-ov-2:   rgba(10, 15, 30, 0.78);
   --section-ov-1: rgba(10, 15, 30, 0.72);
   --section-ov-2: rgba(10, 15, 30, 0.78);
-  --panel-bg:    rgba(17, 34, 64, 0.72);
+  --panel-bg:    rgba(17, 34, 64, 0.52);
   --panel-border: rgba(100, 255, 218, 0.2);
   --panel-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   --btn-primary-text: #0a0f1e;
@@ -350,7 +350,7 @@ ul { list-style: none; }
 }
 
 .section-alt {
-  background: var(--bg-alt);
+  background: transparent;
 }
 
 
