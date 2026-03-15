@@ -337,17 +337,15 @@ ul { list-style: none; }
   color: var(--white);
   margin-bottom: 48px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   white-space: nowrap;
+  text-align: center;
 }
 
 .section-title::after {
-  content: "";
-  display: block;
-  width: 200px;
-  height: 1px;
-  background: var(--surface);
+  display: none;
 }
 
 body { counter-reset: nav-item; }
@@ -357,9 +355,16 @@ body { counter-reset: nav-item; }
    =========================== */
 .about-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 48px;
+  grid-template-columns: 1fr;
+  max-width: 780px;
+  margin: 0 auto;
+  gap: 32px;
   align-items: start;
+  justify-items: center;
+}
+
+.about-text {
+  max-width: 760px;
 }
 
 .about-text p {
