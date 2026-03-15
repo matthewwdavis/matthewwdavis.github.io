@@ -169,7 +169,8 @@ ul { list-style: none; }
 .nav-links a:hover { color: var(--accent); }
 
 .theme-toggle {
-  width: 40px;
+  min-height: 40px;
+  padding: 0 12px;
   height: 40px;
   border-radius: 999px;
   border: 1px solid var(--nav-border);
@@ -178,8 +179,15 @@ ul { list-style: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   cursor: pointer;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.theme-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 .theme-toggle:hover {
