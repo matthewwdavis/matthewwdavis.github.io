@@ -36,16 +36,14 @@ Website/
 
 ## Local Preview
 
-Because this is a static site, there is no build step. To preview locally:
+To preview locally:
 
 ```bash
 cd /Users/davismw/Documents/Website
 python3 -m http.server 8000
 ```
 
-Then open: http://localhost:8000
-
-This is preferred over opening `index.html` directly because the publications section loads JSON with `fetch()`, which is blocked in many browsers for local `file://` pages.
+Then open http://localhost:8000 in a browser.
 
 ## Updating the Site
 
