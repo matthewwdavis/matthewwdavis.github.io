@@ -2,6 +2,7 @@
 
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -11,6 +12,8 @@ from scholarly import scholarly
 SCHOLAR_ID = "NVSRY8kAAAAJ"
 PROFILE_URL = f"https://scholar.google.com/citations?user={SCHOLAR_ID}&hl=en"
 MAX_PUBLICATIONS = 5
+MAX_FETCH_ATTEMPTS = 3
+RETRY_DELAY_SECONDS = 10
 
 
 def normalize_whitespace(value: str) -> str:
@@ -58,8 +61,32 @@ def fetch_publications() -> list[dict[str, str]]:
     return publications[:MAX_PUBLICATIONS]
 
 
+def fetch_publications_with_retries() -> list[dict[str, str]]:
+    last_error: Exception | None = None
+
+    for attempt in range(1, MAX_FETCH_ATTEMPTS + 1):
+        try:
+            publications = fetch_publications()
+            if not publications:
+                raise RuntimeError("No publications returned from Google Scholar")
+            return publications
+        except Exception as error:
+            last_error = error
+            if attempt == MAX_FETCH_ATTEMPTS:
+                break
+            print(
+                f"Fetch attempt {attempt}/{MAX_FETCH_ATTEMPTS} failed: {error}. "
+                f"Retrying in {RETRY_DELAY_SECONDS}s..."
+            )
+            time.sleep(RETRY_DELAY_SECONDS)
+
+    raise RuntimeError(
+        f"Failed to fetch publications after {MAX_FETCH_ATTEMPTS} attempts"
+    ) from last_error
+
+
 def main() -> None:
-    publications = fetch_publications()
+    publications = fetch_publications_with_retries()
 
     output = {
         "source": "Google Scholar",

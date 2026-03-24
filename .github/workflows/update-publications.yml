@@ -25,6 +25,7 @@ jobs:
         run: pip install scholarly
 
       - name: Fetch latest publications
+        timeout-minutes: 5
         run: python scripts/fetch_scholar_publications.py
 
       - name: Commit updated publication data
