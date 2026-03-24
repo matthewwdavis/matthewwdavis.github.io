@@ -4,71 +4,61 @@ import json
 import re
 from pathlib import Path
 
-import requests
-from bs4 import BeautifulSoup
+from scholarly import scholarly
 
 
-PROFILE_URL = "https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en"
-SCHOLAR_URL = "https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en&view_op=list_works&sortby=pubdate"
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/122.0.0.0 Safari/537.36"
-    )
-}
+SCHOLAR_ID = "NVSRY8kAAAAJ"
+PROFILE_URL = f"https://scholar.google.com/citations?user={SCHOLAR_ID}&hl=en"
+MAX_PUBLICATIONS = 5
 
 
 def normalize_whitespace(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
-def fetch_html() -> str:
-    response = requests.get(SCHOLAR_URL, headers=HEADERS, timeout=30)
-    response.raise_for_status()
-    return response.text
+def fetch_publications() -> list[dict[str, str]]:
+    author = scholarly.search_author_id(SCHOLAR_ID)
+    author = scholarly.fill(author, sections=["publications"])
 
-
-def parse_publications(html: str) -> list[dict[str, str]]:
-    soup = BeautifulSoup(html, "html.parser")
-    rows = soup.select("tr.gsc_a_tr")
     publications = []
+    for pub in author.get("publications", []):
+        bib = pub.get("bib", {})
+        title = normalize_whitespace(bib.get("title", ""))
+        authors = normalize_whitespace(bib.get("author", ""))
+        venue = normalize_whitespace(
+            bib.get("venue", "") or bib.get("journal", "") or bib.get("booktitle", "")
+        )
+        year = str(bib.get("pub_year", ""))
 
-    for row in rows[:5]:
-      title_link = row.select_one("a.gsc_a_at")
-      meta_lines = row.select("div.gs_gray")
-      year_cell = row.select_one("span.gsc_a_h, span.gsc_a_y")
+        author_pub_id = pub.get("author_pub_id", "")
+        if author_pub_id:
+            url = (
+                f"https://scholar.google.com/citations?view_op=view_citation"
+                f"&hl=en&user={SCHOLAR_ID}&citation_for_view={author_pub_id}"
+            )
+        else:
+            url = PROFILE_URL
 
-      if not title_link:
-          continue
+        publications.append(
+            {
+                "title": title,
+                "url": url,
+                "authors": authors,
+                "venue": venue,
+                "year": year,
+            }
+        )
 
-      href = title_link.get("href", "")
-      if href.startswith("/"):
-          href = f"https://scholar.google.com{href}"
-
-      authors = normalize_whitespace(meta_lines[0].get_text(" ", strip=True)) if len(meta_lines) > 0 else ""
-      venue = normalize_whitespace(meta_lines[1].get_text(" ", strip=True)) if len(meta_lines) > 1 else ""
-      year = normalize_whitespace(year_cell.get_text(" ", strip=True)) if year_cell else ""
-
-      if venue and year:
-          venue = re.sub(rf"([,\s]+){re.escape(year)}$", "", venue).strip(" ,")
-
-      publications.append(
-          {
-              "title": normalize_whitespace(title_link.get_text(" ", strip=True)),
-              "url": href or SCHOLAR_URL,
-              "authors": authors,
-              "venue": venue,
-              "year": year,
-          }
-      )
-
-    return publications
+    # Return the 5 most recent publications sorted by year descending
+    publications.sort(
+        key=lambda p: int(p["year"]) if p["year"].isdigit() else 0,
+        reverse=True,
+    )
+    return publications[:MAX_PUBLICATIONS]
 
 
 def main() -> None:
-    html = fetch_html()
-    publications = parse_publications(html)
+    publications = fetch_publications()
 
     output = {
         "source": "Google Scholar",
