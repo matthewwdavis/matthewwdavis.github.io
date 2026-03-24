@@ -158,6 +158,27 @@ function formatUpdatedAt(value) {
   }).format(date);
 }
 
+function formatAuthors(value) {
+  if (!value) {
+    return '';
+  }
+
+  const authors = String(value)
+    .split(/\s+and\s+/i)
+    .map((author) => author.trim())
+    .filter(Boolean);
+
+  if (authors.length === 0) {
+    return '';
+  }
+
+  if (authors.length > 4) {
+    return `${authors.slice(0, 3).join(', ')}, et al.`;
+  }
+
+  return authors.join(', ');
+}
+
 async function loadRecentPublications() {
   if (!publicationList) {
     return;
@@ -195,16 +216,16 @@ async function loadRecentPublications() {
     publicationList.innerHTML = publications.map((publication) => {
       const safeTitle = publication.title || 'Untitled publication';
       const safeUrl = publication.url || 'https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en';
-      const authors = publication.authors ? `<span class="publication-meta">${publication.authors}</span>` : '';
+      const authors = formatAuthors(publication.authors);
       const publicationDate = [publication.month, publication.year].filter(Boolean).join(' ');
-      const venueParts = [publication.venue, publicationDate].filter(Boolean).join(', ');
-      const venue = venueParts ? `<span class="publication-meta">${venueParts}</span>` : '';
+      const venueDate = [publication.venue, publicationDate].filter(Boolean).join(', ');
+      const meta = [authors, venueDate].filter(Boolean).join(' | ');
+      const metaLine = meta ? `<span class="publication-meta">${meta}</span>` : '';
 
       return `
         <li>
           <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeTitle}</a>
-          ${authors}
-          ${venue}
+          ${metaLine}
         </li>
       `;
     }).join('');
