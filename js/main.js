@@ -179,6 +179,32 @@ function formatAuthors(value) {
   return authors.join(', ');
 }
 
+function getPublicationSortKey(publication) {
+  const monthByName = {
+    january: 1,
+    february: 2,
+    march: 3,
+    april: 4,
+    may: 5,
+    june: 6,
+    july: 7,
+    august: 8,
+    september: 9,
+    october: 10,
+    november: 11,
+    december: 12,
+  };
+
+  const year = Number.parseInt(String(publication?.year ?? ''), 10);
+  const monthValue = String(publication?.month ?? '').trim().toLowerCase();
+  const month = monthByName[monthValue] ?? 0;
+
+  return {
+    year: Number.isNaN(year) ? 0 : year,
+    month,
+  };
+}
+
 async function loadRecentPublications() {
   if (!publicationList) {
     return;
@@ -192,7 +218,21 @@ async function loadRecentPublications() {
     }
 
     const data = await response.json();
-    const publications = Array.isArray(data.publications) ? data.publications.slice(0, 5) : [];
+    const publications = Array.isArray(data.publications)
+      ? data.publications
+          .slice()
+          .sort((a, b) => {
+            const aKey = getPublicationSortKey(a);
+            const bKey = getPublicationSortKey(b);
+
+            if (aKey.year !== bKey.year) {
+              return bKey.year - aKey.year;
+            }
+
+            return bKey.month - aKey.month;
+          })
+          .slice(0, 5)
+      : [];
     const updatedText = formatUpdatedAt(data.updated_at);
 
     if (publicationUpdated) {
