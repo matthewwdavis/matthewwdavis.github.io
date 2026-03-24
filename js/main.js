@@ -196,7 +196,8 @@ async function loadRecentPublications() {
       const safeTitle = publication.title || 'Untitled publication';
       const safeUrl = publication.url || 'https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en';
       const authors = publication.authors ? `<span class="publication-meta">${publication.authors}</span>` : '';
-      const venueParts = [publication.venue, publication.year].filter(Boolean).join(', ');
+      const publicationDate = [publication.month, publication.year].filter(Boolean).join(' ');
+      const venueParts = [publication.venue, publicationDate].filter(Boolean).join(', ');
       const venue = venueParts ? `<span class="publication-meta">${venueParts}</span>` : '';
 
       return `
