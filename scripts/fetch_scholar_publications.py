@@ -2,6 +2,7 @@
 
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 from scholarly import scholarly
@@ -63,7 +64,7 @@ def main() -> None:
     output = {
         "source": "Google Scholar",
         "profile": PROFILE_URL,
-        "updated_at": __import__("datetime").datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "publications": publications,
     }
 
