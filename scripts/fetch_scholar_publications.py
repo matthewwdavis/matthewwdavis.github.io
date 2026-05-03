@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.11
+"""
+Requires Python 3.10+ (recommended: 3.11). Run with `python3.11`.
+"""
 
 import json
 import re
