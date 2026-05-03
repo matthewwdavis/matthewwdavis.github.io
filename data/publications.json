@@ -1,8 +1,16 @@
 {
   "source": "Google Scholar",
   "profile": "https://scholar.google.com/citations?user=NVSRY8kAAAAJ&hl=en",
-  "updated_at": "2026-04-20T13:22:18Z",
+  "updated_at": "2026-05-03T10:13:41Z",
   "publications": [
+    {
+      "title": "Genome degradation in plant tissue culture",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=NVSRY8kAAAAJ&citation_for_view=NVSRY8kAAAAJ:YsMSGLbcyi4C",
+      "authors": "Matthew W Davis and Charles A Leslie and Chaehee Lee and Evan Long and Li Meinhold and Megan Lorenc and Franklin Lewis and Patrick J Brown and Grey Monroe",
+      "venue": "Proceedings of the National Academy of Sciences",
+      "month": "April",
+      "year": "2026"
+    },
     {
       "title": "Ancient structural variants control sex-specific flowering time morphs in walnuts and hickories",
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=NVSRY8kAAAAJ&citation_for_view=NVSRY8kAAAAJ:zYLM7Y9cAGgC",
@@ -24,14 +32,6 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=NVSRY8kAAAAJ&citation_for_view=NVSRY8kAAAAJ:Tyk-4Ss8FVUC",
       "authors": "John T Davis and Qionghou Li and Christopher J Grassa and Matthew W Davis and Sharon Y Strauss and Jennifer R Gremer and Loren H Rieseberg and Julin N Maloof",
       "venue": "G3: Genes, Genomes, Genetics",
-      "month": "",
-      "year": "2025"
-    },
-    {
-      "title": "Extreme somatic mutation variation through time and space in walnut clones",
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=NVSRY8kAAAAJ&citation_for_view=NVSRY8kAAAAJ:Y0pCki6q_DkC",
-      "authors": "Matthew W Davis and Charles A Leslie and Chaehee Lee and Evan Long and Li Meinhold and Megan Lorenc and Franklin Lewis and Patrick J Brown and J Grey Monroe",
-      "venue": "bioRxiv",
       "month": "",
       "year": "2025"
     },
