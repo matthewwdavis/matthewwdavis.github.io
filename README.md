@@ -75,7 +75,8 @@ To refresh publications locally:
 
 ```bash
 cd /Users/davismw/Documents/Website
-python3 -m pip install requests beautifulsoup4
+# Requires Python 3.10+ (recommended: 3.11)
+python3 -m pip install scholarly requests beautifulsoup4
 python3 scripts/fetch_scholar_publications.py
 ```
 
